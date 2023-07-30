@@ -23,3 +23,32 @@
 //
 // -- This will overwrite an existing command --
 // Cypress.Commands.overwrite('visit', (originalFn, url, options) => { ... })
+
+Cypress.Commands.add('login', (username, password) => {
+    cy.visit('/');
+    cy.title().should('eq', 'OrangeHRM')
+    cy.get('input[name="username"]')
+      .should('be.visible')
+      .type(username);
+    cy.get('input[name="password"]')
+      .should('be.visible')
+      .type(password);
+    cy.get('.oxd-button')
+      .should('be.visible')
+      .click();
+})
+
+Cypress.Commands.add('addCandidate', (mandatoryData, optionalData = {}) => {
+    cy.get('.oxd-button').contains("Add").click();
+    cy.get('input[name=firstName]').type(mandatoryData.firstName)
+    cy.get('input[name=lastName]').type(mandatoryData.lastName)
+    cy.get(':nth-child(3) > .oxd-grid-3 > :nth-child(1) > .oxd-input-group > :nth-child(2) > .oxd-input').type(mandatoryData.email)
+    cy.get('button[type=submit]').click()
+
+})
+
+Cypress.Commands.add('clickMenuOption', (option) => {
+    cy.get('.oxd-main-menu-item')
+      .contains(option)
+      .click();
+})
