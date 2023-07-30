@@ -1,0 +1,14 @@
+{
+  "name": "leniolabs-exercise-ui",
+  "version": "1.0.0",
+  "description": "Technical test for Leniolabs interview process",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Sofía Di Nonno",
+  "license": "ISC",
+  "devDependencies": {
+    "cypress": "^12.17.2"
+  }
+}
