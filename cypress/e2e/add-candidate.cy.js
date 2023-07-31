@@ -11,6 +11,9 @@ describe('Recruitment', () => {
 
     it('Create new candidate with mandatory information', function() {
         cy.addCandidate(this.candidate)
-        cy.get('#oxd-toaster_1').should('be.visible')
+        cy.get('.oxd-text--toast-message')
+            .should('be.visible')
+            .invoke('text')
+            .should('eq', 'Successfully Saved');
     })
 })
